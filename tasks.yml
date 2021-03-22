@@ -1,0 +1,8 @@
+---
+- hosts: play
+  become: true
+  become_method: sudo
+  roles:
+    - python
+    - nginx-setup
+    - postgresql

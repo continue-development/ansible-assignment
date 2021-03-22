@@ -1,0 +1,10 @@
+---
+# vars file for postgresql
+#
+# Template:
+#https://blog.apcelent.com/using-ansible-to-set-up-postgresql.html
+#
+#
+db_user: dbusername
+db_name: dbname
+db_password: dbpassword

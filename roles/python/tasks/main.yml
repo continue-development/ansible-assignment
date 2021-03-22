@@ -1,0 +1,17 @@
+---
+# tasks file for python
+
+- name: install python 2
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+- name: Copy helloworld.py
+  template:
+    src: helloworld.py
+    dest: /home/{{ ansible_user }}/
+#    owner: "{{ ansible_user }}"
+    owner: root
+#    group: "{{ ansible_user }}"
+    group: root
+    mode: '0644'
+
+
