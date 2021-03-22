@@ -1,0 +1,47 @@
+---
+# tasks file for nginx-setup
+
+- name: install python 2
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+- name: Update Cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: Create www directory
+  file:
+    path: /var/www/{{ domain }}
+    state: directory
+    mode: '0775'
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Delete default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+#   state: present
+- name: restart nginx
+  service:
+    name: nginx
+    state: reloaded
+#    become: yes 
+
+- name: Copy nginx site.conf
+  template:
+    src: site.conf.j2
+    dest: /etc/nginx/sites-enabled/{{ domain }}
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: reloaded
