@@ -42,6 +42,10 @@ $ ssh-copy-id user@192.168.1.170
 After performing the above steps, try logging into your remote sever. This time, you will be able to log into your remote server without entering a password.
 $ ssh user@ubuntu
 
+#Run Ansible from your local machine (with Ansible) in Ansible playbook direcotry
+
+ansible-assignment$ ansible-playbook -i inventory tasks.yml -u user
+
 #Known issues
 
 ##Nginx
