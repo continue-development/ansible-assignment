@@ -1,0 +1,9 @@
+---
+# handlers file for postgresql
+#
+# Template:
+# https://blog.apcelent.com/using-ansible-to-set-up-postgresql.html
+#
+#
+- name: restart postgresql
+  service: name=postgresql state=restarted
