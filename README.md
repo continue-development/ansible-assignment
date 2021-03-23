@@ -48,10 +48,6 @@ ansible-assignment$ ansible-playbook -i inventory tasks.yml -u user
 
 # Known issues
 
-## Nginx
-
-No page "Hello World" displayed.
-
 ## Postgresql
 
 
