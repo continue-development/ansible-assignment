@@ -1,9 +1,6 @@
 ---
-# handlers file for postgresql
-#
-# Template:
-# https://blog.apcelent.com/using-ansible-to-set-up-postgresql.html
-#
-#
 - name: restart postgresql
-  service: name=postgresql state=restarted
+  service:
+    name: "{{ postgresql_daemon }}"
+    state: "{{ postgresql_restarted_state }}"
+    sleep: 5
