@@ -2,7 +2,7 @@
 Python, Nginx, Postgresql deployment to Ubuntu 18.04 server using Ansible 
 
 # Note
-This is my first Ansible playbook and there is a lot of changes to make in order to eliminate all error but it was published because of the dead line 2021/03/22.
+This is my first Ansible playbook. All major issues are solved but the postgresql user password is not setup because of the deadline 2021/03/23.
 I am going to continue to make it perfect.
 
 ## Prerequisites
@@ -47,11 +47,6 @@ $ ssh user@ubuntu
 ansible-assignment$ ansible-playbook -i inventory tasks.yml -u user
 
 # Known issues
-
-## Postgresql
-
-
-TASK [postgresql : Ensure database is created] **************************************************
-An exception occurred during task execution. To see the full traceback, use -vvv. The error was: psycopg2.OperationalError: FATAL:  Peer authentication failed for user "postgres"
-fatal: [ubuntu]: FAILED! => {"changed": false, "msg": "unable to connect to database: FATAL:  Peer authentication failed for user \"postgres\"\n"}
-	to retry, use: --limit @/home/user/Luke/tasks.retry
+### Postgresql
+Task: set postgresql user password.
+Issue: the password hasn't been setup.
