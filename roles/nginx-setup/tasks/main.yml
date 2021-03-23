@@ -22,11 +22,28 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
 
+- name: Copy helloworld.com index.html
+  template:
+    src: index.html
+    dest: /var/www/{{ domain }}/index.html
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Delete default nginx site
   file:
     path: /etc/nginx/sites-enabled/default
     state: absent
 #   state: present
+
+- name: Copy nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: restart nginx
   service:
     name: nginx
